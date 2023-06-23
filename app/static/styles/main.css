@@ -52,14 +52,24 @@ body {
 .profile {
     background-color: #1d539f !important;
     text-align: center;
-    height: 320px;
+    height: 350px;
     margin-bottom: 50px;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
 }
 
 .profile h1 {
         font-size: 50px;
         font-weight: 700;
         color: white;
+        margin-bottom: 0;
+}
+
+.profile h2 {
+    font-size: 25px;
+    font-weight: 0;
+    color: white;
+    margin-top: 0;
 }
 
 .profile img {
@@ -75,6 +85,10 @@ body {
 .profile .profile-picture {
     margin-bottom: 30px;
     height: 200px;
+}
+
+.landing {
+    text-align: center;
 }
 
 .banner {
