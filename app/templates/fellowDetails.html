@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./static/styles/fellowDetails.css" />
+    <title>Fellow</title>
+</head>
+
+<body>
+    <div>
+        <h1>Experience</h1>
+        {% for d in experience['experience'] %}
+        <h2>{{d}}</h2>
+        {% endfor %}
+    </div>
+
+    <div>
+        <h1>Hobbies</h1>
+        <div class="hobby-card">
+            <h1>{{hobby1}}</h1>
+            <div class="hobby-image">
+            <img src="{{hobbyImage1}}" alt="hobbyimage1">
+        </div>
+        <div class="hobby-card">
+            <h1>{{hobby2}}</h1>
+            <div class="hobby-image">
+            <img src="{{hobbyImage2}}" alt="hobbyimage2">
+        </div>
+        </div>
+    </div>
+</body>
+
+</html>

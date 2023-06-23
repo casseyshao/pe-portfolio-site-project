@@ -1,0 +1,20 @@
+* {
+    margin: 0px;
+    padding: 0px;
+}
+
+nav {
+    background-color: aqua;
+}
+
+.nav-container {
+    width: 300px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    margin-left: 80px;
+}
+
+h2 {
+    padding: 10px;
+}

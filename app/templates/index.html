@@ -32,38 +32,13 @@
 
     <div class="profile">
         <div id="profile-picture" class="profile-picture">
-            <img src="./static/img/logo.jpg">
+            {% for d in fellow %}
+            <h1><a href={{d}}>{{d}}</a></h1>
+        {% endfor %}
         </div>
-        <h1>{{title}}</h1>
+        
     </div>
-
-    <div class="fellow-card">
-        <div class="top-fellow-card">
-            <div class="pic-container">
-                <img src="" alt="fellow-pic">
-            </div>
-        </div>
-        <div class="bottom-fellow-card">
-
-            <div class="card-attribute">
-            <h4>Experience:</h4>
-            <ul>
-                {% for d in experience1['experience'] %}
-                <li>{{d}}</li>
-                {% endfor %}
-            </ul>
-        </div>
-        <div class="card-attribute">
-            <h4>Hobbies:</h4>
-            <ul>
-                {% for d in hobbies1['hobbies'] %}
-                <li>{{d}}</li>
-                {% endfor %}
-            </ul>
-        </div>
-        </div>
     </div>
-
 </body>
 
 </html>

@@ -61,6 +61,19 @@ body {
     margin-bottom: 50px;
 }
 
+.profile-picture {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.profile-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
 .profile h1 {
         font-size: 50px;
         font-weight: 700;
@@ -139,6 +152,18 @@ body {
     text-align: center;
     font-size: 15px;
 }
+
+.pic-container {
+    width: 300px;
+    height: 150px;
+}
+
+#fellow-image {
+    width: 100%;
+    height: 100%;
+}
+
+
 
 
 

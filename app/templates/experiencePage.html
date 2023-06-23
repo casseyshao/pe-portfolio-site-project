@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{url_for('static', filename='styles/experiencePage.css')}}">
+    <title>Experience</title>
+</head>
+<body>
+    <nav>
+        <h1>Hello</h1>
+        <div class="nav-container">
+            <div class="img-container">
+                
+            </div>
+        </div>
+    </nav>
+    <div class="experience">
+        <div class="experience-container">
+            {% for d in experience['experience'] %}
+                <h2>{{d}}</h2>
+            {% endfor %}
+        </div>
+    </div>
+</body>
+</html>
