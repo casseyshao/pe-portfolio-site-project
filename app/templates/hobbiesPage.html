@@ -10,15 +10,17 @@
     <nav>
         <h1>Hobbies</h1>
         <div class="nav-container">
-            <div class="img-container">
-                <img src="{{url_for('static', filename=hobbyImage1)}}" alt="">
-                <p>{{hobby1}}</p>
-            </div>
-            <div class="img-container">
-                <img src="{{url_for('static', filename=hobbyImage2)}}" alt="">
-                <p>{{hobby2}}</p>
-            </div>
+            
         </div>
     </nav>
+
+    <div>
+        {% for x in hobbies %}
+                {% for d in x %}
+                    <p>{{d}}</p>
+                    <img src="{{url_for('static', filename=x[d])}}" alt="">
+                {% endfor %}
+            {% endfor %}
+    </div>
 </body>
 </html>

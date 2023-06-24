@@ -39,16 +39,15 @@ def experiencePage(fellow):
 
 @app.route('/<fellow>/hobbies')
 def hobbiesPage(fellow):
+    hobbyImage1=os.path.join(hobbyImageDir, 'elden_ring.png')
+    hobbyImage2=os.path.join(hobbyImageDir, 'reggie_picture.jpg')
+
     if fellow == "Reginald":
         data="Reginald Jean Amedee"
-        hobbyImage1=os.path.join(hobbyImageDir, 'elden_ring.png')
-        hobbyImage2=os.path.join(hobbyImageDir, 'reggie_picture.jpg')
-        hobby1="Video Games"
-        hobby2="Hockey"
-        print(hobbyImage1)
+        hobbies=[{"Video Games": hobbyImage1}, {"Hockey": hobbyImage2}]
     elif fellow == "Cassey":
         data="Cassey Shao"
     elif fellow == "Eyob Dagnachew":
         data="Eyob Dagnachew"
 
-    return render_template('hobbiesPage.html', data=data, hobbyImage1=hobbyImage1,hobbyImage2=hobbyImage2,hobby1=hobby1,hobby2=hobby2)
+    return render_template('hobbiesPage.html', data=data, hobbies=hobbies)
