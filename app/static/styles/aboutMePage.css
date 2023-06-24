@@ -4,17 +4,35 @@
 }
 
 nav {
-    background-color: aqua;
+    height: 320px;
+    width: 100vw;
+    background-color: #1d539f;
+    margin-bottom: 10px;
 }
 
 .nav-container {
-    width: 300px;
     display: flex;
     flex-direction: row;
     justify-content: space-around;
-    margin-left: 80px;
+    align-items: center;
+    margin: 0 auto;
+    width: 75%;
+    height: 100%;
 }
 
-h2 {
-    padding: 10px;
+.picture-frame {
+    width: 250px;
+    height: 200px;
+    margin-bottom: 10px;
+}
+
+img {
+    width: 100%;
+    height: 100%;
+}
+
+.nav-portal {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }

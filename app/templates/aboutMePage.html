@@ -1,18 +1,31 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./static/styles/aboutMePage.css">
     <title>About Me</title>
 </head>
+
 <body>
     <nav>
         <div class="nav-container">
-        <h2><a href="{{fellow}}/experience">Experience</a></h2>
-        <h2><a href="{{fellow}}/hobbies">Hobbies</a></h2>
-    </div>
+            <div class="nav-portal">
+                <div class="picture-frame">
+                    <img src="{{url_for('static', filename='img/portfolio.png')}}" alt="hobbies-pic">
+                </div>
+                <h2><a href="{{fellow}}/experience">Experience</a></h2>
+            </div>
+            <div class="nav-portal">
+                <div class="picture-frame">
+                    <img src="{{url_for('static', filename='img/hobbies.png')}}" alt="hobbies-pic">
+                </div>
+                <h2><a href="{{fellow}}/hobbies">Hobbies</a></h2>
+            </div>
+        </div>
     </nav>
-    
+
 </body>
+
 </html>

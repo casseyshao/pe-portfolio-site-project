@@ -33,6 +33,7 @@ img {
 }
 
 .hobby-container h1 {
+    font-size: calc(12px + 2vw);
     text-align: center;
     margin-bottom: 20px;
 }
