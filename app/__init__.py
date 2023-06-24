@@ -4,7 +4,6 @@ from dotenv import load_dotenv
 
 load_dotenv()
 app = Flask(__name__)
-app.config['SEND_FILE_MAX_AGE_DEFAULT'] = 0
 hobbyImageDir = os.path.join('img')
 img = os.path.join('static', 'img')
 
@@ -26,14 +25,15 @@ def fellowPage(fellow):
 @app.route('/<fellow>/experience')
 def experiencePage(fellow):
     if fellow == "Reginald":
-        experience=[{"Vimeo": "Account Manager"}, {"AFreeBird.org": "Web Developer"}]
+        experience=[{"Company" : "Vimeo", "Role": "Account Manager", "JobDescription": ['Recommended brand products to customers, highlighted benefits and redirected objections to secure more than $1,000,000 in upsell.',
+'Worked in an agile environment with Technical Program Managers to ensure that Vimeo’s services are correctly implemented at deadlines that are set.']},{"Company" : "AFreeBird.org", "Role": "Web Enigneer", "JobDescription": ['Making website more responsive on various screen sizes.',
+'Lead Developer on a proprietary solution that will save over $5000 a year', 'Built out database models and backend using Django and Python according to system design requirements.']}, {"Company" : "Black Data Processing Associates", "Role": "Technical Instructor", "JobDescription": ['Demonstrated an exceptional ability to teach and communicate complex coding concepts to students of varying skill levels, resulting in hihgly-engaged and knowledable learners.',
+'Recreated popular website layouts with students by utilizing replit.com integrated development environment.']} ]
         data="Reginald Jean Amedee"
     elif fellow == "Cassey":
         data="Cassey Shao"
     elif fellow == "Eyob Dagnachew":
         data="Eyob Dagnachew"
-
-    print(fellow)
 
     return render_template('experiencePage.html', data=data, experience=experience)
 

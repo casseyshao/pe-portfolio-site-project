@@ -18,17 +18,20 @@
     </nav>
     <div class="experience">
         <div class="experience-container">
+            <h1>Work Experience</h1>
             {% for d in experience %}
-            {% for x in d %}
-            <table style="width:100%">
-                <tr>
-                    <td>{{x}}</td>
-                </tr>
-                <tr>
-                    <td>{{d[x]}}</td>
-                </tr>
-            </table>
-            {% endfor %}
+            <div class="experience-point">
+                <h2>{{d['Company']}} | {{d['Role']}}</h2>
+                <div class="jobDescription">
+                {% for x in d['JobDescription'] %}
+                <ul>
+                    <li>
+                        {{x}}
+                    </li>
+                </ul>
+                {% endfor %}
+            </div>
+            </div>
             {% endfor %}
         </div>
     </div>
