@@ -3,24 +3,30 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="{{url_for('static', filename='styles/experiencePage.css')}}">
+    <link rel="stylesheet" href="{{url_for('static', filename='styles/hobbiesPage.css')}}">
     <title>Hobbies</title>
 </head>
 <body>
     <nav>
-        <h1>Hobbies</h1>
         <div class="nav-container">
-            
+            <div class="picture-frame">
+                <img src="{{url_for('static', filename='img/hobbies.png')}}" alt="hobbies-pic">
+            </div>
         </div>
     </nav>
 
-    <div>
+    <div class="hobbies">
+        <div class="hobby-container">
+            <h1>Hobbies</h1>
         {% for x in hobbies %}
-                {% for d in x %}
-                    <p>{{d}}</p>
-                    <img src="{{url_for('static', filename=x[d])}}" alt="">
-                {% endfor %}
+        <div class="hobby-card">
+                <p>{{x["Hobby_Blurb"]}}</p>
+                <div class="image-frame">
+                <img src="{{url_for('static', filename=x['Hobby_Image'])}}" alt="hobbies-pic">
+            </div>
+            </div>
             {% endfor %}
+        </div>
     </div>
 </body>
 </html>

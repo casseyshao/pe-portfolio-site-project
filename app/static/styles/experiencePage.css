@@ -49,9 +49,18 @@ img {
     margin-bottom: 20px;
 }
 
+.experience-header {
+    width: 50vw;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
 .experience-point h2 {
     margin-bottom: 10px;
     font-size: calc(12px + 1vw);
+    
 }
 
 .jobDescription {
@@ -61,7 +70,7 @@ img {
 }
 
 .jobDescription ul {
-    width: 40vw;
+    width: 50vw;
 }
 
 .jobDescription ul li {
