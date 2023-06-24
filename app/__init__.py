@@ -5,6 +5,7 @@ from dotenv import load_dotenv
 load_dotenv()
 app = Flask(__name__)
 app.config['SEND_FILE_MAX_AGE_DEFAULT'] = 0
+hobbyImageDir = os.path.join('img')
 img = os.path.join('static', 'img')
 
 
@@ -20,33 +21,12 @@ def index():
 @app.route('/<fellow>')
 def fellowPage(fellow):
     fellow=request.args.get('fellow', fellow)
-    # if fellow == "Reginald":
-    #     hobbyImage1=os.path.join(img, 'elden_ring.png')
-    #     hobbyImage2=os.path.join(img, 'reggie_picture.jpg')
-    #     experience={"experience": ['Vimeo', 'A Free Bird']}
-    #     hobby1="Video Games"
-    #     hobby2="Hockey"
-    # elif fellow == "Cassey":
-    #     hobbyImage1=os.path.join(img, 'elden_ring.png')
-    #     hobbyImage2=os.path.join(img, 'reggie_picture.jpg')
-    #     experience={"experience": ['College', 'Local']}
-    #     hobby1="Coding"
-    #     hobby2="Art"
-    # elif fellow == "Eyob":
-    #     hobbyImage1=os.path.join(img, 'elden_ring.png')
-    #     hobbyImage2=os.path.join(img, 'reggie_picture.jpg')
-    #     experience={"experience": ['College', 'Local']}
-    #     hobby1="Drawing"
-    #     hobby2="Dancing"
-
-
-
     return render_template('aboutMePage.html', fellow=fellow)
 
 @app.route('/<fellow>/experience')
 def experiencePage(fellow):
     if fellow == "Reginald":
-        experience={"experience": ['Vimeo', 'A Free Bird']}
+        experience=[{"Vimeo": "Account Manager"}, {"AFreeBird.org": "Web Developer"}]
         data="Reginald Jean Amedee"
     elif fellow == "Cassey":
         data="Cassey Shao"
@@ -61,9 +41,14 @@ def experiencePage(fellow):
 def hobbiesPage(fellow):
     if fellow == "Reginald":
         data="Reginald Jean Amedee"
+        hobbyImage1=os.path.join(hobbyImageDir, 'elden_ring.png')
+        hobbyImage2=os.path.join(hobbyImageDir, 'reggie_picture.jpg')
+        hobby1="Video Games"
+        hobby2="Hockey"
+        print(hobbyImage1)
     elif fellow == "Cassey":
         data="Cassey Shao"
     elif fellow == "Eyob Dagnachew":
         data="Eyob Dagnachew"
 
-    return render_template('hobbiesPage.html', data=data)
+    return render_template('hobbiesPage.html', data=data, hobbyImage1=hobbyImage1,hobbyImage2=hobbyImage2,hobby1=hobby1,hobby2=hobby2)

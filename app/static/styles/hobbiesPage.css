@@ -1,0 +1,9 @@
+* {
+    margin: 0px;
+    padding: 0px;
+}
+
+nav {
+    height: 50px;
+    background-color: blue;
+}

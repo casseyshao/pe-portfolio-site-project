@@ -3,9 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{url_for('static', filename='styles/experiencePage.css')}}">
     <title>Hobbies</title>
 </head>
 <body>
-    <h1>{{data}}</h1>
+    <nav>
+        <h1>Hobbies</h1>
+        <div class="nav-container">
+            <div class="img-container">
+                <img src="{{url_for('static', filename=hobbyImage1)}}" alt="">
+                <p>{{hobby1}}</p>
+            </div>
+            <div class="img-container">
+                <img src="{{url_for('static', filename=hobbyImage2)}}" alt="">
+                <p>{{hobby2}}</p>
+            </div>
+        </div>
+    </nav>
 </body>
 </html>
