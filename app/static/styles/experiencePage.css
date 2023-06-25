@@ -78,3 +78,14 @@ img {
     font-size: calc(12px + 0.5vw);
 }
 
+@media screen and (max-width: 900px) {
+    .experience-header {
+        flex-direction: column;
+    }
+
+    .experience-header h3 {
+        margin-bottom: 10px;
+    }
+}
+
+

@@ -36,3 +36,9 @@ img {
     flex-direction: column;
     align-items: center;
 }
+
+@media screen and (max-width: 495px) {
+    .picture-frame {
+        width: 30vw;
+    }
+}
