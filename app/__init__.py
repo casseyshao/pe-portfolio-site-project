@@ -43,6 +43,9 @@ def experiencePage(fellow):
 def hobbiesPage(fellow):
     hobbyImage1=os.path.join(hobbyImageDir, 'elden_ring.png')
     hobbyImage2=os.path.join(hobbyImageDir, 'reggie_picture.jpg')
+    hikingImage=os.path.join(hobbyImageDir, "hiking.webp")
+    bookImage=os.path.join(hobbyImageDir, "books.webp")
+    travelImage=os.path.join(hobbyImageDir, "travel.jpg")
 
     if fellow == "Reginald":
         data="Reginald Jean Amedee"
@@ -50,6 +53,8 @@ def hobbiesPage(fellow):
                 {"Hobby_Blurb": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.", "Hobby_Image": hobbyImage2},]
     elif fellow == "Cassey":
         data="Cassey Shao"
+        hobbies=[{"Hobby_Blurb" : "I enjoy reading everything from non-fiction to novels to poems to plays and more! I made it a goal this year to read 12 books.", "Hobby_Image": bookImage},
+                {"Hobby_Blurb": "I enjoy being outside and walking! One of my favourite hikes was Panorama Ridge in BC, Canada!", "Hobby_Image": travelImage}, {"Hobby_Blurb": "I love being on the road and having new experiences and trying new foods and meeting people! It is a dream to be able to travel a lot in my life!", "Hobby_Image": hikingImage}]
     elif fellow == "Eyob Dagnachew":
         data="Eyob Dagnachew"
 
