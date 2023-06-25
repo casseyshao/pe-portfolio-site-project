@@ -31,13 +31,19 @@
     </header>
 
     <div class="profile">
-        <div id="profile-picture" class="profile-picture">
-            {% for d in fellow %}
-            <h1><a href={{d}}>{{d}}</a></h1>
-        {% endfor %}
+        {% for person in landing_data %}
+        <div>
+            <div id="profile-picture" class="profile-picture">
+                <img src="{{ person.img }}">
+            </div>
+            <h1>{{ title }}</h1>
+            <h2>{{ person.name }}</h2>
         </div>
-        
+        {% endfor %}
     </div>
+
+    <div class="landing">
+        <p>{{ intro_message }}</p>
     </div>
 </body>
 
