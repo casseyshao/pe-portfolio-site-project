@@ -1,0 +1,159 @@
+* {
+    margin: 0px;
+    padding: 0px;
+}
+
+nav {
+    height: 320px;
+    width: 100vw;
+    background-color: #1d539f;
+    margin-bottom: 10px;
+}
+
+.nav-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+
+.picture-frame {
+    width: 250px;
+    height: 200px;
+}
+
+img {
+    width: 100%;
+    height: 100%;
+}
+
+.hobbies {
+    width: 100%;
+}
+
+.hobby-container h1 {
+    font-size: calc(12px + 2vw);
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.hobby-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.hobby-card p {
+    margin-bottom: 25px;
+    width: 50vw;
+    font-size: calc(12px + 1vw);
+}
+
+.image-frame {
+    width: 50vw;
+    height: 60vh;
+    margin-bottom: 25px;
+}
+
+.img {
+    width: 100%;
+    height: 100%;
+}
+
+@media screen and (max-width: 800px) {
+    .image-frame {
+        height: 40vh;
+    }
+}
+
+/* Arrow CSS */
+
+.arrow {
+    position: fixed;
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+    /*   border:solid 1px white; */
+    transition: 0.5s;
+    overflow: hidden;
+    top: 20px;
+    left: 50px;
+}
+
+.arrow:hover {
+    /*  animation:borderAni 5s cubic-bezier(0, 0.6, 1, 0.4); */
+    border: solid 2px white;
+    border-radius: 50%;
+}
+
+.arrow:after {
+    position: absolute;
+    display: block;
+    content: "";
+    color: white;
+    width: 20px;
+    height: 15px;
+    /*   border:solid 1px;  */
+    top: -1px;
+    border-bottom: solid 2px;
+    transform: translatex(4px);
+}
+
+.arrow:before {
+    position: absolute;
+    display: block;
+    content: "";
+    color: white;
+    width: 8px;
+    height: 8px;
+    /*   border:solid 1px;  */
+    border-top: solid 2px;
+    border-left: solid 2px;
+    top: 50%;
+    left: 2px;
+    transform-origin: 0% 0%;
+    transform: rotatez(-45deg);
+
+}
+
+.arrow:hover:before {
+    animation: aniArrow01 1s cubic-bezier(0, 0.6, 1, 0.4) infinite 0.5s;
+}
+
+.arrow:hover:after {
+    animation: aniArrow02 1s cubic-bezier(0, 0.6, 1, 0.4) infinite 0.5s;
+}
+
+
+@keyframes aniArrow01 {
+    0% {
+        transform: rotatez(-45deg) translateY(30px) translateX(30px);
+    }
+
+    100% {
+        transform: rotatez(-45deg) translateY(-35px) translateX(-35px);
+    }
+}
+
+
+@keyframes aniArrow02 {
+    0% {
+        transform: translateX(45px);
+    }
+
+    100% {
+        transform: translateX(-44px);
+    }
+}
+
+@keyframes borderAni {
+    0% {
+        border: solid 2px white;
+    }
+
+    100% {
+        border: solid 2px white;
+        border-radius: 50%;
+    }
+}
