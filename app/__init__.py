@@ -62,6 +62,9 @@ def hobbiesPage(fellow):
     hikingImage=os.path.join(hobbyImageDir, "hiking.webp")
     bookImage=os.path.join(hobbyImageDir, "books.webp")
     travelImage=os.path.join(hobbyImageDir, "travel.jpg")
+    eyobPhotography=os.path.join(hobbyImageDir, "eyobPhotography.webp")
+    digitalArt=os.path.join(hobbyImageDir, "digitalArt.webp")
+    lightWriting=os.path.join(hobbyImageDir, "lightWriting.avif")
 
     if fellow == "Reginald Amedee":
         data="Reginald Amedee"
@@ -72,6 +75,8 @@ def hobbiesPage(fellow):
         hobbies=[{"Hobby_Blurb" : "I enjoy reading everything from non-fiction to novels to poems to plays and more! I made it a goal this year to read 12 books.", "Hobby_Image": bookImage},
                 {"Hobby_Blurb": "I enjoy being outside and walking! One of my favourite hikes was Panorama Ridge in BC, Canada!", "Hobby_Image": travelImage}, {"Hobby_Blurb": "I love being on the road and having new experiences and trying new foods and meeting people! It is a dream to be able to travel a lot in my life!", "Hobby_Image": hikingImage}]
     elif fellow == "Eyob Dagnachew":
+        hobbies=[{"Hobby_Blurb" : "I always enjoy putting something from my imagination and challenging myself into making it as real as possible with the basic theories of art.", "Hobby_Image": digitalArt},
+                {"Hobby_Blurb": "I love photography because it challenges me to taking something that already exists that I already like and engage with it in a new way by trying to represent it in a new was through the lens.", "Hobby_Image": eyobPhotography}, {"Hobby_Blurb": "I like writing because it fills the gap of things that i cant bring to life in writing by brining them to life with my words instead, allowing me to delved even further to my imagination.", "Hobby_Image": lightWriting}]
         data="Eyob Dagnachew"
 
     return render_template('hobbiesPage.html', data=data, hobbies=hobbies)
