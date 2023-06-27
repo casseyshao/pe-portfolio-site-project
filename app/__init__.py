@@ -24,6 +24,36 @@ landing_data = [
 ]
 
 
+pic_data = {
+"Reginald Amedee": "./static/img/reginald.jpeg",
+"Eyob Dagnachew": "./static/img/eyob.jpeg",        
+"Cassey Shao": "./static/img/cassey.JPG",
+}
+
+
+about_me= {
+
+    "Reginald Amedee": """About Me: Hi, My name is Reginald and I am a developer based out 
+    of New York City. I have three years of Account Management/Customer Success experience 
+    in technology. I've always wanted to bo be an engineer and made 
+    the courageous decision to quit my job last 
+    year to pursue this passion full time! 
+    I have experience with a variety of technologies and 
+    I love to build things. Always looking to collaborate!""",
+
+    "Cassey Shao": """ About me: Hi my name is Cassey! I am a new grad computer engineering student
+      from University of Toronto! I am interested in building good software! 
+      I have experience with building software from school, internships, and hackathons! 
+      Outside of this, I love being active! I like hiking, going on long walks in downtown, and playing sports!""",
+      
+      "Eyob Dagnachew": """Hello there! My name is Eyob, I'm an incoming junior at 
+       Carnegie Mellon University in Pittsburgh! I love trying to find new ways to apply creativity
+       to make something new in the world! One of those ways is through coding which is something I've
+        been doing for the past couple years through internships, research, and hackathons! other than tech
+        I'm usually trying to find some more artistic outlets for my creativity, resulting in me
+         having a camera bag, sketchbook and laptop in my backpack almost constantly!  """
+}
+
 @app.route('/')
 def index():
 
@@ -32,8 +62,12 @@ def index():
 
 @app.route('/<fellow>')
 def fellowPage(fellow):
+    full_name = fellow.split()
+    image_link = full_name[0]
+    
     fellow=request.args.get('fellow', fellow)
-    return render_template('aboutMePage.html', fellow=fellow)
+    print()
+    return render_template('aboutMePage.html', fellow=fellow, name= image_link, data= pic_data, intro= about_me)
 
 @app.route('/<fellow>/experience')
 def experiencePage(fellow):

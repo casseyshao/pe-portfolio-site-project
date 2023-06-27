@@ -1,32 +1,65 @@
+
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./static/styles/aboutMePage.css">
-    <title>About Me</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta property="og:title" content="Personal Portfolio">
+    <meta property="og:description" content="My Personal Portfolio">
+    <meta property="og:url" content="{{ url }}">
+
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
+        rel="stylesheet">
+
+    <link lang='sass' rel="stylesheet" href="./static/styles/aboutMePage.css">
+    <link rel='icon' href='./static/img/favicon.ico' type='image/x-icon' />
+    <title>{{ title }}</title>
 </head>
 
 <body>
+    <header class="nav-bar">
+        <div class="nav-content">
+            <a href="/">
+                <div class="nav-logo">
+                    <img src="./static/img/logo.svg" />
+                </div>
+            </a>
+        </div>
+    </header>
     <nav>
         <div class="arrow" onclick="history.back()"></div>
         <div class="nav-container">
             <div class="nav-portal">
-                <div class="picture-frame">
-                    <img src="{{url_for('static', filename='img/portfolio.png')}}" alt="hobbies-pic">
-                </div>
-                <h2><a href="{{fellow}}/experience">Experience</a></h2>
+
+                <h2><a class="link-test" href="{{fellow}}/experience">Experience</a></h2>
             </div>
             <div class="nav-portal">
-                <div class="picture-frame">
-                    <img src="{{url_for('static', filename='img/hobbies.png')}}" alt="hobbies-pic">
-                </div>
+
                 <h2><a href="{{fellow}}/hobbies">Hobbies</a></h2>
+            </div>
+            <div class="nav-portal">
+
+                <h2><a href="{{fellow}}/education">Education</a></h2>
             </div>
         </div>
     </nav>
+    <div class="profile">
+        <div id="profile-picture" class="profile-picture">
+            <img src="{{data[fellow]}}">
+        </div>
+        <h1>{{fellow}}</h1>
+    </div>
 
+    <h1 class = "about_me">About me!</h1>
+        <p class="content">{{intro[fellow]}}</p>
 </body>
-
 </html>
+
+
+
+
+
