@@ -174,3 +174,18 @@ body {
     margin-bottom: 3%;
     text-align: center;
 }
+
+.pin1 {
+    color: #669940;
+    font-size: 2em;
+}
+
+.pin2 {
+    color: #d93e2b;
+    font-size: 2em;
+}
+
+.pin3 {
+    color: #30a9de;
+    font-size: 2em;
+}

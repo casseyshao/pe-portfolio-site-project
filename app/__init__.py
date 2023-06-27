@@ -14,6 +14,7 @@ landing_data = [
         "name": "Reginald Amedee",
         "img": "./static/img/reginald.jpeg",
         "marker_color": "green",
+        "style": "pin1",
         "places": [
             {
                 "coord": [43.6532, -79.3832],
@@ -49,6 +50,7 @@ landing_data = [
         "name": "Eyob Dagnachew",
         "img": "./static/img/eyob.jpeg",
         "marker_color": "red",
+        "style": "pin2",
         "places": [
             {
                 "coord": [43.7615, -79.4111],
@@ -68,6 +70,7 @@ landing_data = [
         "name": "Cassey Shao",
         "img": "./static/img/cassey.JPG",
         "marker_color": "blue",
+        "style": "pin3",
         "places": [
             {
                 "coord": [43.6205, -79.5132],
@@ -107,7 +110,7 @@ def build_map():
     # Add markers for each person
     for person in landing_data:
         for p in person["places"]:
-            folium.Marker(p["coord"], popup = p["name"], icon=folium.Icon(color=person["marker_color"], icon="check")).add_to(my_map)
+            folium.Marker(p["coord"], popup = p["name"], icon=folium.Icon(color=person["marker_color"], icon="circle", prefix="fa")).add_to(my_map)
 
     my_map = my_map._repr_html_()
     return my_map
