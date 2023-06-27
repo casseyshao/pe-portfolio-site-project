@@ -45,6 +45,12 @@
     <div class="landing">
         <p>{{ intro_message }}</p>
     </div>
+
+    <div class="map">
+        <h3>{{ map_title }}</h3>
+        {{ my_map | safe }}
+        <p>{{ map_desc }}</p>
+    </div>
 </body>
 
 </html>
