@@ -42,16 +42,16 @@ about_me= {
     I love to build things. Always looking to collaborate!""",
 
     "Cassey Shao": """ About me: Hi my name is Cassey! I am a new grad computer engineering student
-      from University of Toronto! I am interested in building good software! 
-      I have experience with building software from school, internships, and hackathons! 
-      Outside of this, I love being active! I like hiking, going on long walks in downtown, and playing sports!""",
-      
-      "Eyob Dagnachew": """Hello there! My name is Eyob, I'm an incoming junior at 
-       Carnegie Mellon University in Pittsburgh! I love trying to find new ways to apply creativity
-       to make something new in the world! One of those ways is through coding which is something I've
-        been doing for the past couple years through internships, research, and hackathons! other than tech
-        I'm usually trying to find some more artistic outlets for my creativity, resulting in me
-         having a camera bag, sketchbook and laptop in my backpack almost constantly!  """
+    from University of Toronto! I am interested in building good software! 
+    I have experience with building software from school, internships, and hackathons! 
+    Outside of this, I love being active! I like hiking, going on long walks in downtown, and playing sports!""",
+
+    "Eyob Dagnachew": """Hello there! My name is Eyob, I'm an incoming junior at 
+    Carnegie Mellon University in Pittsburgh! I love trying to find new ways to apply creativity
+    to make something new in the world! One of those ways is through coding which is something I've
+    been doing for the past couple years through internships, research, and hackathons! other than tech
+    I'm usually trying to find some more artistic outlets for my creativity, resulting in me
+    having a camera bag, sketchbook and laptop in my backpack almost constantly!  """
 }
 
 @app.route('/')
@@ -116,3 +116,22 @@ def hobbiesPage(fellow):
     return render_template('hobbiesPage.html', data=data, hobbies=hobbies)
 
 
+@app.route('/<fellow>/education')
+def education(fellow):
+    if fellow == "Reginald Amedee":
+        experience=[{"Company" : "St. John's University", "Role": "Bachelor's degree, English; Business & English;", 'Date': "2010 - 2015"},{"Company" : "Coding Dojo", "Role": "Activities and societies: Certificate of completion", "JobDescription": [' Worked on projects that included Techonologies such as HTML/HTML5, CSS, MERN Stack, and JavaScript'], "Date": "March 2021 - July 2021"}, {"Company" : "B.D.P.A", "Role": "Technical Instructor", "JobDescription": ['Demonstrated an exceptional ability to teach and communicate complex coding concepts to students of varying skill levels, resulting in hihgly-engaged and knowledable learners.',
+'Recreated popular website layouts with students by utilizing replit.com integrated development environment.'], "Date": "Feb 2023 - Aug 2023"}]
+        data="Reginald Amedee"
+    elif fellow == "Cassey Shao":
+        experience=[{"Company" : "University of Toronto", "Role": "BASc, Computer Enginnering", "JobDescription": ["Activities and societies: Skule Intramural Women's Ice Hockey 2022-2023 | Engineering Orientation Week Group Head Leader 2020 and 2022 | Computer Science PRISM (Preparation for Research through Immersion, Skills, and Mentorship) 2022 Cohort | Sustainable Engineers Association Co-President 2020-2021 | ILead Summer Fellows 2020 Cohort | Sustainable Engineers Association Awareness and Support Director 2019-2020",
+'Candidate for computer engineering major, business minor, and artificial intelligence certificate. Enrolled in the Professional Experience Year (PEY) co-op program.'], "Date": "Sep 2018 - June 2023"}, {"Company" : "Etobicoke School of the Arts","Role": "High School Diploma, Contemporary Visual Arts", "JobDescription": ["Activities and societies: Student Council President (2017-2018)", "Equity Committee Co-President (2015-2018)", "Student Council Equity Representative (2015-2017) ", ],  "Date": "2014 - 2018"}]
+        data="Cassey Shao"
+    elif fellow == "Eyob Dagnachew":
+        experience=[{"Company" : "Carnegie Mellon", "Role": "B.S in  Statistics/Machine Learning","JobDescription": ["Relevent Coursework: Data Structures and Algorithms, Fundamentals of Software Engineering , Methods for Statistics and Data Science, Probability and Statistical Inference, Concepts of Mathematics"],
+
+ "Date": 'June 2021 - May 2025'},
+                    {"Company" : "Annandale High School", "Role": "IB Diploma ","Date" : " August 2017 - May 2021"}]
+        data="Eyob Dagnachew"
+
+
+    return render_template('education.html', data = data, experience = experience)

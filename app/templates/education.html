@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{url_for('static', filename='styles/experiencePage.css')}}">
+    <title>Experience</title>
+</head>
+
+<body>
+    <nav>
+        <div class="arrow" onclick="history.back()"></div>
+        <div class="nav-container">
+            <div class="picture-frame">
+                <img src="{{url_for('static', filename='img/education.png')}}" alt="hobbies-pic">
+            </div>
+        </div>
+    </nav>
+    <div class="experience">
+        <div class="experience-container">
+            <h1>Education</h1>
+            {% for d in experience %}
+            <div class="experience-point">
+                <div class="experience-header">
+                <h2>{{d['Company']}}<br> 
+                 {{d['Role']}}</h2>
+                <h3>{{d['Date']}}</h3>
+            </div>
+                <div class="jobDescription">
+                {% for x in d['JobDescription'] %}
+                <ul>
+                    <li>
+                        {{x}}
+                    </li>
+                </ul>
+                {% endfor %}
+            </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</body>
+
+</html>
