@@ -143,6 +143,16 @@ about_me= {
     been doing for the past couple years through internships, research, and hackathons! other than tech
     I'm usually trying to find some more artistic outlets for my creativity, resulting in me
     having a camera bag, sketchbook and laptop in my backpack almost constantly!  """
+    from University of Toronto! I am interested in building good software! 
+    I have experience with building software from school, internships, and hackathons! 
+    Outside of this, I love being active! I like hiking, going on long walks in downtown, and playing sports!""",
+    
+    "Eyob Dagnachew": """Hello there! My name is Eyob, I'm an incoming junior at 
+    Carnegie Mellon University in Pittsburgh! I love trying to find new ways to apply creativity
+    to make something new in the world! One of those ways is through coding which is something I've
+        been doing for the past couple years through internships, research, and hackathons! other than tech
+        I'm usually trying to find some more artistic outlets for my creativity, resulting in me
+        having a camera bag, sketchbook and laptop in my backpack almost constantly!  """
 }
 
 @app.route('/')
