@@ -123,7 +123,6 @@ pic_data = {
 
 
 about_me= {
-
     "Reginald Amedee": """About Me: Hi, My name is Reginald and I am a developer based out 
     of New York City. I have three years of Account Management/Customer Success experience 
     in technology. I've always wanted to bo be an engineer and made 
@@ -143,9 +142,7 @@ about_me= {
     been doing for the past couple years through internships, research, and hackathons! other than tech
     I'm usually trying to find some more artistic outlets for my creativity, resulting in me
     having a camera bag, sketchbook and laptop in my backpack almost constantly!  """
-    from University of Toronto! I am interested in building good software! 
-    I have experience with building software from school, internships, and hackathons! 
-    Outside of this, I love being active! I like hiking, going on long walks in downtown, and playing sports!""",
+
     
     "Eyob Dagnachew": """Hello there! My name is Eyob, I'm an incoming junior at 
     Carnegie Mellon University in Pittsburgh! I love trying to find new ways to apply creativity
