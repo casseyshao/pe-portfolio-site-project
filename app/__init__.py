@@ -130,20 +130,16 @@ about_me= {
     year to pursue this passion full time! 
     I have experience with a variety of technologies and 
     I love to build things. Always looking to collaborate!""",
-
     "Cassey Shao": """ About me: Hi my name is Cassey! I am a new grad computer engineering student
     from University of Toronto! I am interested in building good software! 
     I have experience with building software from school, internships, and hackathons! 
     Outside of this, I love being active! I like hiking, going on long walks in downtown, and playing sports!""",
-
     "Eyob Dagnachew": """Hello there! My name is Eyob, I'm an incoming junior at 
     Carnegie Mellon University in Pittsburgh! I love trying to find new ways to apply creativity
     to make something new in the world! One of those ways is through coding which is something I've
     been doing for the past couple years through internships, research, and hackathons! other than tech
     I'm usually trying to find some more artistic outlets for my creativity, resulting in me
-    having a camera bag, sketchbook and laptop in my backpack almost constantly!  """
-
-    
+    having a camera bag, sketchbook and laptop in my backpack almost constantly!  """,
     "Eyob Dagnachew": """Hello there! My name is Eyob, I'm an incoming junior at 
     Carnegie Mellon University in Pittsburgh! I love trying to find new ways to apply creativity
     to make something new in the world! One of those ways is through coding which is something I've
@@ -229,7 +225,7 @@ def education(fellow):
     elif fellow == "Eyob Dagnachew":
         experience=[{"Company" : "Carnegie Mellon", "Role": "B.S in  Statistics/Machine Learning","JobDescription": ["Relevent Coursework: Data Structures and Algorithms, Fundamentals of Software Engineering , Methods for Statistics and Data Science, Probability and Statistical Inference, Concepts of Mathematics"],
 
- "Date": 'June 2021 - May 2025'},
+"Date": 'June 2021 - May 2025'},
                     {"Company" : "Annandale High School", "Role": "IB Diploma ","Date" : " August 2017 - May 2021"}]
         data="Eyob Dagnachew"
 
