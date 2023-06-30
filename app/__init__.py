@@ -229,5 +229,4 @@ def education(fellow):
                     {"Company" : "Annandale High School", "Role": "IB Diploma ","Date" : " August 2017 - May 2021"}]
         data="Eyob Dagnachew"
 
-
     return render_template('education.html', data = data, experience = experience)
