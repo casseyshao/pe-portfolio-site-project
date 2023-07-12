@@ -189,3 +189,38 @@ body {
     color: #30a9de;
     font-size: 2em;
 }
+
+.timeline_header {
+    text-align: center;
+}
+
+.timeline_form {
+    text-align: center;
+    margin-left: 15%;
+    margin-right: 15%;
+    margin-top: 2%;
+}
+
+.timeline_form form {
+    margin-top: 2%;
+}
+
+.timeline_list {
+    text-align: center;
+    margin-left: 15%;
+    margin-right: 15%;
+    margin-top: 5%;
+}
+
+.timeline_list table {
+    margin-top: 2%;
+    margin-left: auto;
+    margin-right: auto;
+    border: 1px solid black;
+    border-collapse: collapse;
+}
+
+.timeline_form th, td {
+    border: 1px solid black;
+    border-collapse: collapse;
+}

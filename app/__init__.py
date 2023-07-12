@@ -5,9 +5,11 @@ import folium
 from peewee import *
 import datetime
 from playhouse.shortcuts import model_to_dict
+from data import landing_data
 
 load_dotenv()
 app = Flask(__name__)
+
 mydb = MySQLDatabase(os.getenv("MYSQL_DATABASE"),
               user=os.getenv("MYSQL_USER"),
               password=os.getenv("MYSQL_PASSWORD"),
@@ -30,102 +32,6 @@ mydb.create_tables([TimelinePost])
 hobbyImageDir = os.path.join('img')
 img = os.path.join('static', 'img')
 
-# Landing page data
-landing_data = [
-    {
-        "name": "Reginald Amedee",
-        "img": "./static/img/reginald.jpeg",
-        "marker_color": "green",
-        "style": "pin1",
-        "places": [
-            {
-                "coord": [43.6532, -79.3832],
-                "name": "Toronto"
-            },
-            {
-                "coord": [37.4415, 25.3667],
-                "name": "Mykonos"
-            },
-            {
-                "coord": [23.1136, -82.3666],
-                "name": "Cuba"
-            },
-            {
-                "coord": [10.6918, -61.2225],
-                "name": "Trinidad"
-            },
-            {
-                "coord": [36.3932, 25.4615],
-                "name": "Santorini"
-            },
-            {
-                "coord": [64.9631, -19.0208],
-                "name": "Iceland"
-            },
-            {
-                "coord": [18.1096, 77.2975],
-                "name": "Jamaica"
-            }
-        ],
-    },
-    {
-        "name": "Eyob Dagnachew",
-        "img": "./static/img/eyob.jpeg",
-        "marker_color": "red",
-        "style": "pin2",
-        "places": [
-            {
-                "coord": [43.7615, -79.4111],
-                "name": "Canada"
-            },
-            {
-                "coord": [9.1450, 40.4897],
-                "name": "Ethiopia"
-            },
-            {
-                "coord": [52.3555, -1.1743],
-                "name": "England"
-            }
-        ],
-    },
-    {
-        "name": "Cassey Shao",
-        "img": "./static/img/cassey.JPG",
-        "marker_color": "blue",
-        "style": "pin3",
-        "places": [
-            {
-                "coord": [43.6205, -79.5132],
-                "name": "Toronto"
-            },
-            {
-                "coord": [48.8566, 2.3522],
-                "name": "Paris"
-            },
-            {
-                "coord": [38.7223, 9.1393],
-                "name": "Lisbon"
-            },
-            {
-                "coord": [43.7696, 11.2558],
-                "name": "Florence"
-            },
-            {
-                "coord": [37.9838, 23.7275],
-                "name": "Athens"
-            },
-            {
-                "coord": [39.9042, 116.4074],
-                "name": "Beijing"
-            },
-            {
-                "coord": [22.5090, -78.4070],
-                "name": "Cayo Coco"
-            }
-        ],
-    }
-]
-
 def build_map():
     my_map = folium.Map()
 
@@ -142,7 +48,6 @@ pic_data = {
 "Eyob Dagnachew": "./static/img/eyob.jpeg",        
 "Cassey Shao": "./static/img/cassey.JPG",
 }
-
 
 about_me= {
 
@@ -181,7 +86,6 @@ def fellowPage(fellow):
     image_link = full_name[0]
     
     fellow=request.args.get('fellow', fellow)
-    print()
     return render_template('aboutMePage.html', fellow=fellow, name= image_link, data= pic_data, intro= about_me)
 
 @app.route('/<fellow>/experience')
@@ -253,13 +157,10 @@ def education(fellow):
 
 @app.route('/api/timeline_post', methods=['POST'])
 def post_time_line_post():
-    print("POST REQUEST HERE")
-    print(request.form)
     name = request.form['name']
     email = request.form['email']
     content = request.form['content']
     timeline_post = TimelinePost.create(name=name, email=email, content=content)
-
     return model_to_dict(timeline_post)
 
 @app.route('/api/timeline_post', methods=['GET'])
@@ -270,3 +171,26 @@ def get_time_line_post():
             for p in TimelinePost.select().order_by(TimelinePost.created_at.desc())
         ]
     }
+
+# @app.route('/api/timeline_post', methods=['DELETE'])
+# def delete_time_line_post():
+#     qry=TimelinePost.delete().where (TimelinePost.name=="hello")
+#     qry.execute()
+#     return "Done"
+
+@app.route('/timeline')
+def timeline():
+    timeline_posts = get_time_line_post()['timeline_posts']
+    return render_template('timeline.html', title="Timeline", timeline_posts=timeline_posts)
+
+# `read-form` endpoint
+@app.route('/read-form', methods=['POST'])
+def read_form():
+    # Get the form data as Python ImmutableDict datatype
+    # data = request.form
+
+    # Send the form input to the database
+    post_time_line_post()
+
+    # Update timeline page
+    return timeline()
