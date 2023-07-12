@@ -78,6 +78,11 @@ body {
     height: 200px;
 }
 
+.fellow-name {
+    font-size: 5vw;
+    border: 1px solid red;
+}
+
 .banner {
     padding: 20px 0px 50px 0px;
     height: 150px;
@@ -98,8 +103,6 @@ body {
 }
 
 .about_me{
-
-
     display: flex   ;
     
     justify-content:center;
