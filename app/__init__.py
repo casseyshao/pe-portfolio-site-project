@@ -1,4 +1,5 @@
 import datetime
+from datetime import timezone
 import os
 from flask import Flask, render_template, request, jsonify
 from dotenv import load_dotenv
@@ -10,7 +11,10 @@ import folium
 
 
 load_dotenv('./example.env')
+
 app = Flask(__name__)
+
+app.run(debug=True)
 
 mydb = MySQLDatabase(os.getenv("MYSQL_DATABASE"),
     user=os.getenv("MYSQL_USER"),
@@ -23,13 +27,11 @@ class TimelinePost(Model):
     name=CharField()
     email=CharField()
     content=TextField()
-    created_on=DateTimeField(default=datetime.datetime.now())
+    created_on=datetime.datetime.utcnow
 
     class Meta:
         database = mydb
 
-    
-    
 
 mydb.connect()
 mydb.create_tables([TimelinePost])
@@ -43,13 +45,40 @@ def post_time_line_post():
 
     return model_to_dict(timeline_post)
 
+def default(o):
+    if isinstance(o, (datetime.date, datetime.datetime)):
+        return o.isoformat()
+
 @app.route('/api/timeline_post', methods=['GET'])
 def get_time_line_post():
 
+
+    data = TimelinePost.select().order_by(TimelinePost.created_on.desc())
+    
+    data = [model_to_dict(d) for d in data]
+    print(data)
+    json_data=json.dumps(data, default=str)
+    print(json_data)
+
+    # return {
+    #     'timeline_post': [
+    #         model_to_dict(p)
+    #         for p in TimelinePost.select().order_by(TimelinePost.created_on.desc())
+    #     ]
+    # }
+
+    return json.dumps(
+        data,
+        sort_keys=True,
+        indent=1,
+        default=default )
+
+@app.route('/timeline')
+def timeline():
+
     data = TimelinePost.select().order_by(TimelinePost.created_on.desc())
     print(data)
-    data = [model_to_dict(d) for d in data]
-    return json.dumps(data, default=str)
+    return render_template('timeline.html', title="timeline", data=data)
 
 
 hobbyImageDir = os.path.join('img')
