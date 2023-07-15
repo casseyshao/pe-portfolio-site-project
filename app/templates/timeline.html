@@ -1,19 +1,51 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title></title>
+    <link lang='sass' rel="stylesheet" href="./static/styles/timelinepage.css">
+    <title>Timeline</title>
 </head>
-<body>
-    <form action="">
-        <h1>Test</h1>
 
-        {% for d in data %}
-        
-            <h1>{{d.name}}</h1>
-            <h1>{{d.created_on}}</h1>
-        {% endfor %}
-    </form>
+<body>
+    <div class="body">
+        <h1 id="title">Timeline</h1>
+        <div class="container">
+            <div class="timeline-form">
+                <form action="{{ url_for('timeline')}}" method="post">
+
+                    <div class="form-input">
+                        <label for="name">Name</label><br>
+                        <input type="text" id="name" name="name">
+                    </div>
+                    
+                    <div class="form-input">
+                        <label for="email">Email</label><br>
+                        <input type="email" id="email" name="email">
+                    </div>
+
+                    <div class="form-input" style="margin-bottom: 20px;">
+                        <label for="content">Content</label><br>
+                        <textarea id="content" name="content" rows="4" cols="20"></textarea>
+                    </div>
+
+                    <input type="submit" value="submit">
+                </form>
+
+            </div>
+
+            <div class="timeline">
+                {% for d in data %}
+                <div class="timeline-top">
+                    <h1>{{d.name}}</h1>
+                    <h3>{{d.email}}</h3>
+                </div>
+                <p>{{d.content}}</p>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
 </body>
+
 </html>

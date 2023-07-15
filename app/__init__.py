@@ -1,12 +1,10 @@
-import datetime
-from datetime import timezone
 import os
-from flask import Flask, render_template, request, jsonify
+from flask import Flask, render_template, request, redirect
 from dotenv import load_dotenv
 from peewee import *
 from playhouse.shortcuts import model_to_dict
 import json
-
+import datetime
 import folium
 
 
@@ -14,7 +12,8 @@ load_dotenv('./example.env')
 
 app = Flask(__name__)
 
-app.run(debug=True)
+if __name__ == "__main__":
+    app.run(debug=True)
 
 mydb = MySQLDatabase(os.getenv("MYSQL_DATABASE"),
     user=os.getenv("MYSQL_USER"),
@@ -27,7 +26,7 @@ class TimelinePost(Model):
     name=CharField()
     email=CharField()
     content=TextField()
-    created_on=datetime.datetime.utcnow
+    created_on=DateTimeField(default=datetime.datetime.now)
 
     class Meta:
         database = mydb
@@ -52,13 +51,9 @@ def default(o):
 @app.route('/api/timeline_post', methods=['GET'])
 def get_time_line_post():
 
-
     data = TimelinePost.select().order_by(TimelinePost.created_on.desc())
     
     data = [model_to_dict(d) for d in data]
-    print(data)
-    json_data=json.dumps(data, default=str)
-    print(json_data)
 
     # return {
     #     'timeline_post': [
@@ -73,8 +68,15 @@ def get_time_line_post():
         indent=1,
         default=default )
 
-@app.route('/timeline')
+@app.route('/timeline', methods=['GET', 'POST'])
 def timeline():
+
+    if request.method == "POST":
+        name = request.form.get("name")
+        email = request.form.get("email")
+        content = request.form.get("content")
+        timeline_post = TimelinePost.create(name=name,email=email,content=content)
+    redirect('timeline.html')
 
     data = TimelinePost.select().order_by(TimelinePost.created_on.desc())
     print(data)
