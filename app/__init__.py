@@ -55,13 +55,6 @@ def get_time_line_post():
     
     data = [model_to_dict(d) for d in data]
 
-    # return {
-    #     'timeline_post': [
-    #         model_to_dict(p)
-    #         for p in TimelinePost.select().order_by(TimelinePost.created_on.desc())
-    #     ]
-    # }
-
     return json.dumps(
         data,
         sort_keys=True,
