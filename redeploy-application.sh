@@ -11,7 +11,3 @@ pip install -r requirements.txt
 systemctl restart myportfolio
 
 systemctl status myportfolio
-
-
-
-
