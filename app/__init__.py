@@ -22,11 +22,27 @@ mydb = MySQLDatabase(os.getenv("MYSQL_DATABASE"),
     port=3306
 )
 
+class CustomDateTimeField(DateTimeField):
+    def python_value(self, value):
+        return value
+
+    def db_value(self, value):
+        if isinstance(value, str):
+            value = datetime.datetime.strptime(value, '%a, %d %b %Y %H:%M:%S %Z')
+        return value
+
+    def __get__(self, instance, owner):
+        value = super(CustomDateTimeField, self).__get__(instance, owner)
+        if isinstance(value, datetime.datetime):
+            value = value.strftime('%a, %d %b %Y %H:%M:%S GMT')
+        return value
+
+
 class TimelinePost(Model):
     name=CharField()
     email=CharField()
     content=TextField()
-    created_on=DateTimeField(default=datetime.datetime.now)
+    created_on=DateTimeField(default=datetime.datetime.now())
 
     class Meta:
         database = mydb
@@ -34,46 +50,6 @@ class TimelinePost(Model):
 
 mydb.connect()
 mydb.create_tables([TimelinePost])
-
-@app.route('/api/timeline_post', methods=['POST'])
-def post_time_line_post():
-    name = request.form['name']
-    email = request.form['email']
-    content = request.form['content']
-    timeline_post = TimelinePost.create(name=name,email=email,content=content)
-
-    return model_to_dict(timeline_post)
-
-def default(o):
-    if isinstance(o, (datetime.date, datetime.datetime)):
-        return o.isoformat()
-
-@app.route('/api/timeline_post', methods=['GET'])
-def get_time_line_post():
-
-    data = TimelinePost.select().order_by(TimelinePost.created_on.desc())
-    
-    data = [model_to_dict(d) for d in data]
-
-    return json.dumps(
-        data,
-        sort_keys=True,
-        indent=1,
-        default=default )
-
-@app.route('/timeline', methods=['GET', 'POST'])
-def timeline():
-
-    if request.method == "POST":
-        name = request.form.get("name")
-        email = request.form.get("email")
-        content = request.form.get("content")
-        timeline_post = TimelinePost.create(name=name,email=email,content=content)
-    redirect('timeline.html')
-
-    data = TimelinePost.select().order_by(TimelinePost.created_on.desc())
-    print(data)
-    return render_template('timeline.html', title="timeline", data=data)
 
 
 hobbyImageDir = os.path.join('img')
@@ -301,3 +277,47 @@ def education(fellow):
         data="Eyob Dagnachew"
 
     return render_template('education.html', data = data, experience = experience)
+
+
+@app.route('/api/timeline_post', methods=['POST'])
+def post_time_line_post():
+    name = request.form['name']
+    email = request.form['email']
+    content = request.form['content']
+    timeline_post = TimelinePost.create(name=name,email=email,content=content)
+
+    return model_to_dict(timeline_post)
+
+def default(o):
+    if isinstance(o, (datetime.date, datetime.datetime)):
+        return o.isoformat()
+
+@app.route('/api/timeline_post', methods=['GET'])
+def get_time_line_post():
+
+    data = TimelinePost.select().order_by(TimelinePost.created_on.desc())
+    data = [model_to_dict(d) for d in data]
+    print(datetime.datetime.now())
+
+    return json.dumps(
+        data,
+        sort_keys=True,
+        indent=1,
+        default=default )
+
+@app.route('/timeline')
+def timeline():
+    data = TimelinePost.select().order_by(TimelinePost.created_on.desc())
+
+    if request.method == "POST":
+        name = request.form.get("name")
+        email = request.form.get("email")
+        content = request.form.get("content")
+        timeline_post = TimelinePost.create(name=name,email=email,content=content)
+    redirect('timeline.html')
+
+    print(datetime.datetime.now())
+
+    return render_template('timeline.html', title="timeline", data=data)
+
+

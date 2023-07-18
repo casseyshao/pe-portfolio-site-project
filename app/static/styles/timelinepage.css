@@ -16,6 +16,7 @@
 form {
     border: 5px solid black;
     margin-bottom: 20px;
+    background-color: whitesmoke;
 }
 
 .form-container {
@@ -56,10 +57,14 @@ img {
     height: 100%;
 }
 
-.timeline-container {
-    border: 1px solid pink;
+.timeline {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
+}
+
+.timeline-container {
+    border: 3px solid black;
+    margin-bottom: 10px;
 }
 
 .timeline-top {
@@ -67,22 +72,29 @@ img {
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
-    margin-bottom: 10px;
-    width: 40vw;
+    height: 30px;
+    background-color: whitesmoke
 }
 
 .timeline-top h1 {
-    font-size: 1.9vw;
+    font-size: 1.5vw;
     width: 200vw;
 }
 
 .timeline-top h3 {
     width: 200vw;
-    font-size: 1.5vw;
-    align-self: flex-end;
+    font-size: 1.2vw;
+}
+
+.timeline-bottom {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 40px;
+    border-top: 3px solid black;
+    background-color: whitesmoke
 }
 
 p {
-    margin-bottom: 20px;
-    font-size: 1.3vw;
+    font-size: 1.1vw;
 }
