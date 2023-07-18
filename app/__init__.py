@@ -5,9 +5,12 @@ import folium
 from peewee import * 
 import datetime
 from playhouse.shortcuts import model_to_dict 
+from flask_cors import CORS
 
 load_dotenv()
 app = Flask(__name__)
+CORS(app)
+
 
 mydb = MySQLDatabase(os.getenv("MYSQL_DATABASE"),
               user=os.getenv("MYSQL_USER"),
@@ -273,3 +276,8 @@ def get_time_line_post():
 TimelinePost.select().order_by(TimelinePost.created_at.desc())
         ]
     }
+
+
+@app.route("/timeline")
+def timeline():
+    return render_template('timeline.html', Title = 'Timeline')
