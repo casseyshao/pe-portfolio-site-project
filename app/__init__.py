@@ -15,12 +15,15 @@ app = Flask(__name__)
 if __name__ == "__main__":
     app.run(debug=True)
 
-mydb = MySQLDatabase(os.getenv("MYSQL_DATABASE"),
-    user=os.getenv("MYSQL_USER"),
-    password=os.getenv("MYSQL_PASSWORD"),
-    host=os.getenv("MYSQL_HOST"),
-    port=3306
-)
+if os.getenv("TESTING") == "true":
+    print("Running in test mode")
+    mydb = SqliteDatabase('file:memory?mode=memory&cache=shared', uri=True)
+else:
+    mydb = MySQLDatabase(os.getenv("MYSQL_DATABASE"),
+                    user=os.getenv("MYSQL_USER"),
+                    password=os.getenv("MYSQL_PASSWORD"),
+                    host=os.getenv("MYSQL_HOST"),
+                    port=3306)
 
 class CustomDateTimeField(DateTimeField):
     def python_value(self, value):
@@ -288,26 +291,15 @@ def post_time_line_post():
 
     return model_to_dict(timeline_post)
 
-def default(o):
-    if isinstance(o, (datetime.date, datetime.datetime)):
-        return o.isoformat()
-
 @app.route('/api/timeline_post', methods=['GET'])
 def get_time_line_post():
-
     data = TimelinePost.select().order_by(TimelinePost.created_on.desc())
     data = [model_to_dict(d) for d in data]
-    print(datetime.datetime.now())
 
-    return json.dumps(
-        data,
-        sort_keys=True,
-        indent=1,
-        default=default )
+    return json.dumps(data, default=str)
 
-@app.route('/timeline')
+@app.route('/timeline', methods=['POST', 'GET'])
 def timeline():
-    data = TimelinePost.select().order_by(TimelinePost.created_on.desc())
 
     if request.method == "POST":
         name = request.form.get("name")
@@ -316,7 +308,7 @@ def timeline():
         timeline_post = TimelinePost.create(name=name,email=email,content=content)
     redirect('timeline.html')
 
-    print(datetime.datetime.now())
+    data = TimelinePost.select().order_by(TimelinePost.created_on.desc())
 
     return render_template('timeline.html', title="timeline", data=data)
 
