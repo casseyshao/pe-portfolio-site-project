@@ -1,0 +1,121 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta property="og:title" content="Personal Portfolio">
+    <meta property="og:description" content="My Personal Portfolio">
+    <meta property="og:url" content="{{ url }}">
+
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
+        rel="stylesheet">
+
+    <link lang='sass' rel="stylesheet" href="./static/styles/timeline.css">
+    <link rel='icon' href='./static/img/favicon.ico' type='image/x-icon' />
+    <title>{{ title }}</title>
+</head>
+
+<body>
+    <header class="nav-bar">
+        <div class="nav-content">
+            <a href="/">
+                <div class="nav-logo">
+                    <img src="./static/img/logo.svg" />
+                </div>
+            </a>
+        </div>
+    </header>
+    <nav>
+
+    <div class="nav-container">
+            <div class="nav-portal">
+
+                <h2><a class="link-test" href="{{fellow}}/experience">Experience</a></h2>
+            </div>
+            <div class="nav-portal">
+
+                <h2><a href="{{fellow}}/hobbies">Hobbies</a></h2>
+            </div>
+            <div class="nav-portal">
+
+                <h2><a href="{{fellow}}/education">Education</a></h2>
+            </div>
+        </div>
+
+    <div class="Poster">
+        <p id="time_intro"> Type below to add to timeline!</p>
+    </div>
+
+    <div class="add-event">
+        <form id="form">
+            <label for="Name">Name:</label>
+            <input name="name" type="text">
+            <label for="Name">Email:</label>
+            <input name="email" type="text">
+            <label for="Name">Text:</label>
+            <input name="content" type="text">
+            <button type="submit">Submit</button>
+        </form> 
+    </div>
+
+
+    <div class = "table">
+
+        <h1 class="class"> Timeline!</h1>
+
+
+
+    </div>
+
+
+    <div class = "list">
+
+        <ul>  </ul>
+
+
+    </div>
+    
+
+
+
+
+    <script>
+
+
+
+const form = document.getElementById('form');
+
+form.addEventListener('submit', function(e) {
+    e.preventDefault();
+    const payload = new FormData(form);
+    fetch('http://localhost:5000/api/timeline_post', {
+    method: 'POST',
+    body: payload,
+    })
+    .then(res => res.json())
+    //.then(data => console.log(data))
+
+
+    fetch('http://localhost:5000/api/timeline_post')
+  .then(res => res.json())
+  .then(data => {
+    const outputDiv = document.getElementById("output");
+    data.timeline_posts.forEach(post => {
+        const markup = `<li>Name: ${post.name}, Email: ${post.email}, Content: ${post.content}</li>`;
+      document.querySelector('ul').insertAdjacentHTML('beforeend', markup);
+    });
+  })
+
+
+})
+
+
+</script>
+
+
+</body>
