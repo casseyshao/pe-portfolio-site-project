@@ -29,19 +29,19 @@
                 </div>
             </a>
         </div>
-    </header>
 
-    <div class="profile">
-        {% for person in landing_data %}
-        <div>
-            <div id="profile-picture" class="profile-picture">
-                <img src="{{ person.img }}">
+        <div class="profile">
+            {% for person in landing_data %}
+            <div class="profile-card">
+                <div id="profile-picture" class="profile-picture">
+                    <img src="{{ person.img }}">
+                </div>
+                <h1>{{ title }}</h1>
+                <h2><a href="{{person.name}}">{{ person.name }}</a></h2>
             </div>
-            <h1>{{ title }}</h1>
-            <h2><a href="{{person.name}}">{{ person.name }}</a></h2>
+            {% endfor %}
         </div>
-        {% endfor %}
-    </div>
+    </header>
 
     <div class="landing">
         <p>{{ intro_message }}</p>

@@ -58,9 +58,8 @@ body {
     background-color: #1d539f !important;
     text-align: center;
     height: 350px;
-    margin-bottom: 50px;
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
+    margin-bottom: 10px;
+    
 }
 
 .profile-picture {
@@ -88,6 +87,11 @@ body {
     font-weight: 0;
     color: white;
     margin-top: 0;
+}
+
+.profile-card {
+    display: flex;
+    flex-direction: column;
 }
 
 .profile img {

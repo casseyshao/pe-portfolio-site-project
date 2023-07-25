@@ -55,10 +55,11 @@ body {
     justify-content:center;
     height: 250px;
     display:flex;
+    align-items: center;
 }
 
 .profile h1 {
-        font-size: 100px;
+        font-size: calc(50px + 2vw);
         font-weight: 700;
         color: white;
         margin-bottom: 20px;
@@ -76,10 +77,6 @@ body {
 .profile .profile-picture {
     margin-bottom: 30px;
     height: 200px;
-}
-
-.fellow-name {
-    font-size: 5vw;
 }
 
 .banner {
@@ -102,8 +99,7 @@ body {
 }
 
 .about_me{
-    display: flex   ;
-    
+    display: flex;
     justify-content:center;
     padding: 10px;
     background-color: #1d539f;
@@ -261,4 +257,25 @@ nav {
         border-radius: 50%;
     }
 }
+
+@media screen and (max-width: 500px) {
+    .profile {
+        flex-direction: column;
+        height: 450px;
+    }
+
+    .nav-portal h2 a {
+        font-size: 5vw;
+    }
+}
+
+@media screen and (max-width: 380px) {
+    .content {
+        margin-left: 0px;
+        margin-right: 0px;
+        padding: 10px;
+    }
+}
+
+
 
