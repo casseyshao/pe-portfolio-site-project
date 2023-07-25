@@ -212,3 +212,12 @@ p {
     width: 70%;
 }
 }
+
+@media screen and (max-width: 570px) {
+    
+    .timeline-top h3 {
+        width: 200vw;
+        font-size: 3vw;
+    }
+
+}
