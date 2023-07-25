@@ -258,14 +258,17 @@ nav {
     }
 }
 
+@media screen and (max-width: 594px) {
+
+    .nav-portal h2 a {
+        font-size: 4vw;
+    }
+}
+
 @media screen and (max-width: 500px) {
     .profile {
         flex-direction: column;
         height: 450px;
-    }
-
-    .nav-portal h2 a {
-        font-size: 5vw;
     }
 }
 
