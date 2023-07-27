@@ -5,7 +5,7 @@ services:
     build: .
     restart: always
     env_file:
-      - .env
+      - example.env
     environment:
       - FLASK_ENV=development
     ports:
@@ -20,7 +20,7 @@ services:
     image: mardiadb
     restart: always
     env_file:
-      - .env
+      - example.env
     volumes:
       - mydatabase:/var/lib/mySql
 
