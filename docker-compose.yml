@@ -17,7 +17,7 @@ services:
 
   mySql:
     container_name: mySql
-    image: mardiadb
+    image: mariadb
     restart: always
     env_file:
       - example.env
