@@ -2,7 +2,7 @@
 
 import unittest
 import os
-# os.environ['TESTING'] = 'true'
+os.environ['TESTING'] = 'true'
 
 from app import app
 
