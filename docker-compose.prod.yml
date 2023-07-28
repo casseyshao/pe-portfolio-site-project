@@ -1,0 +1,28 @@
+version: "3"
+services:
+  myportfolio:
+    container_name: myportfolio
+    build: .
+    restart: always
+    env_file:
+      - example.env
+    environment:
+      - FLASK_ENV=development
+    ports:
+      - "5000:5000"
+    depends_on:
+      - mySql
+
+  mySql:
+    container_name: mySql
+    image: mariadb
+    restart: always
+    env_file:
+      - example.env
+    volumes:
+      - mydatabase:/var/lib/mySql
+    command:
+      ["--wait-timeout=10000", "--max-allowed-packet=256M"]
+
+volumes:
+  mydatabase:
