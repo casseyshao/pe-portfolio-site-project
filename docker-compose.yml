@@ -24,7 +24,7 @@ services:
     volumes:
       - mydatabase:/var/lib/mySql
     command:
-      ["--wait-timeout=10000"]
+      ["--wait-timeout=10000", "--max-allowed-packet=256M"]
 
 volumes:
   mydatabase:
