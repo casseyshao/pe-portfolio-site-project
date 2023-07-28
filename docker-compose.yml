@@ -23,6 +23,8 @@ services:
       - example.env
     volumes:
       - mydatabase:/var/lib/mySql
+    command:
+      ["--wait-timeout=10000"]
 
 volumes:
   mydatabase:
