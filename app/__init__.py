@@ -25,6 +25,12 @@ else:
                     host=os.getenv("MYSQL_HOST"),
                     port=3306)
 
+
+@app.teardown_appcontext
+def close_db(exeption):
+    if not mydb.is_closed():
+        mydb.close()
+
 class CustomDateTimeField(DateTimeField):
     def python_value(self, value):
         return value
@@ -53,6 +59,11 @@ class TimelinePost(Model):
 
 mydb.connect()
 mydb.create_tables([TimelinePost])
+
+@app.teardown_appcontext
+def close_db(exeption):
+    if not mydb.is_closed():
+        mydb.close()
 
 
 hobbyImageDir = os.path.join('img')
