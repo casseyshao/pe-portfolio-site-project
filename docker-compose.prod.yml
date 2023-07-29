@@ -11,6 +11,22 @@ services:
     depends_on:
       - mySql
 
+  nginx:
+    container_name: nginx
+    image: jonasal/nginx-certbot
+    restart: always
+    environment: [name@example.com]
+    ports:
+    - 80:80
+    - 443:443
+    volumes:
+    - nginx_secrets:/etc/letsenscrypt
+    - ./user.conf.d:/etc/nginx/user_conf.d
+    depends_on:
+    - myportfolio
+
+
+
   mySql:
     container_name: mySql
     image: mariadb
@@ -24,3 +40,4 @@ services:
 
 volumes:
   mydatabase:
+  nginx_secrets:
