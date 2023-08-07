@@ -9,7 +9,7 @@ services:
     depends_on:
       - mysql
 
-  mySql:
+  mysql:
     container_name: mysql
     image: mariadb
     restart: always
