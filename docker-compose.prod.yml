@@ -22,7 +22,7 @@ services:
 
   nginx:
     container_name: nginx
-    image: jonasal/nginx-certbot:latest
+    image: jonasal/nginx-certbot
     restart: always
     environment: 
     - CERTBOT_EMAIL=jeanarts92@gmail.com
@@ -31,7 +31,7 @@ services:
     - 443:443
     volumes:
     - nginx_secrets:/etc/letsenscrypt
-    - ./user.conf.d:/etc/nginx/user_conf.d
+    - ./user_conf.d:/etc/nginx/user_conf.d
     depends_on:
     - myportfolio
 
