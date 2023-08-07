@@ -7,16 +7,16 @@ services:
     env_file:
       - example.env
     depends_on:
-      - mySql
+      - mysql
 
   mySql:
-    container_name: mySql
+    container_name: mysql
     image: mariadb
     restart: always
     env_file:
       - example.env
     volumes:
-      - mydatabase:/var/lib/mySql
+      - mydatabase:/var/lib/mysql
     command:
       ["--wait-timeout=10000", "--max-allowed-packet=256M"]
 
