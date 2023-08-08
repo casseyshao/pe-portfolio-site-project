@@ -207,9 +207,17 @@ def timeline():
 
     return render_template('timeline.html', title="timeline", data=data)
 
-@app.route("/<id>/delete", methods=["DELETE"])
-def delete():
-    id = TimelinePost.select()
+@app.route('/api/timeline_post/<id>', methods=['DELETE'])
+def delete_time_line_post(id):
+    print(id)
+    try:
+        timeline_post = TimelinePost.get_by_id(id)
+        timeline_post.delete_instance()
+        return f"Successfully deleted timeline post with id {id}\n", 200
+    except TimelinePost.DoesNotExist:
+        return f"Timeline post with id {id} does not exist\n", 404
+    except Exception as e:
+        return f"An error occurred while deleting the timeline post: {str(e)}\n", 500
 
 if os.getenv("TESTING") == "true":
     print("Running in test mode")
