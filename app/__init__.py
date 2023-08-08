@@ -123,19 +123,16 @@ pic_data = {
 
 
 about_me= {
-    "Reginald Amedee": """About Me: Hi, My name is Reginald and I am a developer based out 
-    of New York City. I have three years of Account Management/Customer Success experience 
-    in technology. I've always wanted to bo be an engineer and made 
-    the courageous decision to quit my job last 
-    year to pursue this passion full time! 
-    I have experience with a variety of technologies and 
-    I love to build things. Always looking to collaborate!""",
+    "Reginald Amedee": """Hi, My name is Reginald and I am a developer based out 
+    of New York City. I have three years of Account Management/Customer Success experience in technology. 
+    I've always wanted to be an engineer and made the courageous decision to quit my job last year to pursue this passion full time! 
+    I have experience with a variety of technologies and I love to build things. Always looking to collaborate!""",
 }
 
 @app.route('/')
 def index():
     my_map = build_map()
-    intro_message = "Welcome to our page! Click on a fellow to learn more about them!"
+    intro_message = "Welcome to my page! Click on my name to learn more about me!"
     map_title = "A map of all the places that we have been to:"
     map_desc = "Reginald (Green), Eyob (Red), Cassey (Blue)"
     return render_template('index.html', title="MLH Fellow", url=os.getenv("URL"), landing_data=landing_data, intro_message=intro_message, my_map=my_map, map_title=map_title, map_desc=map_desc)
@@ -174,19 +171,9 @@ def hobbiesPage(fellow):
 @app.route('/<fellow>/education')
 def education(fellow):
     if fellow == "Reginald Amedee":
-        experience=[{"Company" : "St. John's University", "Role": "Bachelor's degree, English; Business & English;", 'Date': "2010 - 2015"},{"Company" : "Coding Dojo", "Role": "Activities and societies: Certificate of completion", "JobDescription": [' Worked on projects that included Techonologies such as HTML/HTML5, CSS, MERN Stack, and JavaScript'], "Date": "March 2021 - July 2021"}, {"Company" : "B.D.P.A", "Role": "Technical Instructor", "JobDescription": ['Demonstrated an exceptional ability to teach and communicate complex coding concepts to students of varying skill levels, resulting in hihgly-engaged and knowledable learners.',
-'Recreated popular website layouts with students by utilizing replit.com integrated development environment.'], "Date": "Feb 2023 - Aug 2023"}]
+        experience=[{"Company" : "St. John's University", "Role": "Bachelor's degree, English; Business & English;", 'Date': "2010 - 2015"},{"Company" : "Coding Dojo", "Role": "Activities and societies: Certificate of completion", "JobDescription": [' Worked on projects that included Techonologies such as HTML/HTML5, CSS, MERN Stack, and JavaScript'], "Date": "March 2021 - July 2021"}]
         data="Reginald Amedee"
-    elif fellow == "Cassey Shao":
-        experience=[{"Company" : "University of Toronto", "Role": "BASc, Computer Enginnering", "JobDescription": ["Activities and societies: Skule Intramural Women's Ice Hockey 2022-2023 | Engineering Orientation Week Group Head Leader 2020 and 2022 | Computer Science PRISM (Preparation for Research through Immersion, Skills, and Mentorship) 2022 Cohort | Sustainable Engineers Association Co-President 2020-2021 | ILead Summer Fellows 2020 Cohort | Sustainable Engineers Association Awareness and Support Director 2019-2020",
-'Candidate for computer engineering major, business minor, and artificial intelligence certificate. Enrolled in the Professional Experience Year (PEY) co-op program.'], "Date": "Sep 2018 - June 2023"}, {"Company" : "Etobicoke School of the Arts","Role": "High School Diploma, Contemporary Visual Arts", "JobDescription": ["Activities and societies: Student Council President (2017-2018)", "Equity Committee Co-President (2015-2018)", "Student Council Equity Representative (2015-2017) ", ],  "Date": "2014 - 2018"}]
-        data="Cassey Shao"
-    elif fellow == "Eyob Dagnachew":
-        experience=[{"Company" : "Carnegie Mellon", "Role": "B.S in  Statistics/Machine Learning","JobDescription": ["Relevent Coursework: Data Structures and Algorithms, Fundamentals of Software Engineering , Methods for Statistics and Data Science, Probability and Statistical Inference, Concepts of Mathematics"],
-
-"Date": 'June 2021 - May 2025'},
-                    {"Company" : "Annandale High School", "Role": "IB Diploma ","Date" : " August 2017 - May 2021"}]
-        data="Eyob Dagnachew"
+    
 
     return render_template('education.html', data = data, experience = experience)
 
@@ -197,7 +184,6 @@ def post_time_line_post():
     email = request.form['email']
     content = request.form['content']
     timeline_post = TimelinePost.create(name=name,email=email,content=content)
-
     return model_to_dict(timeline_post)
 
 @app.route('/api/timeline_post', methods=['GET'])

@@ -115,6 +115,15 @@ body {
     display:flex;
 }
 
+.card {
+    width: 60%;
+    margin: 0 auto;
+}
+
+.card-body {
+    
+}
+
 
 
 

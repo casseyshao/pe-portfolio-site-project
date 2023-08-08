@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{{url_for('static', filename='styles/experiencePage.css')}}">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.rtl.min.css" integrity="sha384-PRrgQVJ8NNHGieOA1grGdCTIt4h21CzJs6SnWH4YMQ6G5F5+IEzOHz67L4SQaF0o" crossorigin="anonymous">
     <title>Experience</title>
 </head>
 
@@ -22,18 +23,14 @@
             <h1>Work Experience</h1>
             {% for d in experience %}
             <div class="experience-point">
-                <div class="experience-header">
-                <h2>{{d['Company']}} | {{d['Role']}}</h2>
-                <h3>{{d['Date']}}</h3>
-            </div>
-                <div class="jobDescription">
+            <div class="card" style="width: 60%;">
+                <div class="card-body">
+                <h5 class="card-title">{{d['Company']}}</h5>
+                <h6 class="card-subtitle mb-2 text-body-secondary">{{d['Role']}}</h6>
                 {% for x in d['JobDescription'] %}
-                <ul>
-                    <li>
-                        {{x}}
-                    </li>
-                </ul>
+                <p class="card-text">{{x}}</p>
                 {% endfor %}
+                </div>
             </div>
             </div>
             {% endfor %}

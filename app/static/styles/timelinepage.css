@@ -13,93 +13,12 @@
     padding: 5px;
 }
 
-form {
-    border: 5px solid black;
-    margin-bottom: 20px;
-    background-color: whitesmoke;
-}
-
-.form-container {
-    width: 70%;
-    margin: 0 auto;
-}
-
-.container {
-    width: 40%;
-    margin: 0 auto;
-}
-
-label {
-    margin-bottom: 10px;
-    font-size: 3vw;
-}
-
-.form-input {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 10px;
-}
-
-.form-input input {
-    width: 20vw;
-}
-
-.form-input textarea {
-    width: 20vw;
-}
-
 .button {
     padding: 7px;
     margin: 0 auto;
     display: block;
     margin-bottom: 20px;
-}
-
-img {
-    width: 100%;
-    height: 100%;
-}
-
-.timeline {
-    display: flex;
-    flex-direction: column;
-}
-
-.timeline-container {
-    border: 3px solid black;
-    margin-bottom: 10px;
-}
-
-.timeline-top {
-    display: flex;
-    flex-direction: column;
-    background-color: whitesmoke;
-    padding: 20px;
-}
-
-.timeline-top h1 {
-    font-size: 2.5vw;
-    width: 200vw;
-    margin-bottom: 5px;
-}
-
-.timeline-top h3 {
-    width: 200vw;
-    font-size: 1.8vw;
-}
-
-.timeline-bottom {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    border-top: 3px solid black;
-    background-color: whitesmoke;
-    padding: 20px;
-}
-
-p {
-    font-size: 2vw;
+    
 }
 
 /* Arrow CSS */
