@@ -1,5 +1,5 @@
 import os
-from flask import Flask, render_template, request, redirect
+from flask import Flask, render_template, request, redirect, Response
 from dotenv import load_dotenv
 from peewee import *
 from playhouse.shortcuts import model_to_dict
@@ -25,15 +25,12 @@ def connect_to_database():
 
 app = Flask(__name__)
 
-
 if os.getenv("TESTING") == "true":
     print("Running in test mode")
     mydb = SqliteDatabase('file:memory?mode=memory&cache=shared', uri=True)
 else:
     mydb = connect_to_database()
     
-
-
 
 
 class CustomDateTimeField(DateTimeField):
@@ -180,9 +177,27 @@ def education(fellow):
 
 @app.route('/api/timeline_post', methods=['POST'])
 def post_time_line_post():
+    
+    keys = request.form.keys()
+
+    if "name" not in keys:
+        return Response("Invalid name", status=400)
     name = request.form['name']
+    if not name:
+        return Response("Invalid name", status=400)
+
+    if "email" not in keys:
+        return Response("Invalid email", status=400)
     email = request.form['email']
+    if not email or email.count("@") != 1:
+        return Response("Invalid email",status=400)
+    
+    if "content" not in keys:
+        return Response("Invalid content", status=400)
     content = request.form['content']
+    if not content:
+        return Response("Invalid content", status=400)
+
     timeline_post = TimelinePost.create(name=name,email=email,content=content)
     return model_to_dict(timeline_post)
 
