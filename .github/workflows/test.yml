@@ -19,7 +19,7 @@ jobs:
       - name: Setup Python
         uses: actions/setup-python@v4
         with:
-          python-version: '3.9.6' # Change to your desired Python version
+          python-version: '3.11' # Change to your desired Python version
 
       - name: Setup Python Virtual Environment
         run: source python3-virtualenv/bin/activate
