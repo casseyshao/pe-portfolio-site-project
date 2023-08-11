@@ -22,7 +22,7 @@ jobs:
           python-version: '3.6.8' # Change to your desired Python version
 
       - name: Setup Python Virtual Environment
-        run: python -m venv python3-virtualenv 
+        run: source python3-virtualenv/bin/activate
 
       - name: Install Depedencies
         run: python3-virtualenv/bin/pip install -r requirements.requirements.txt
