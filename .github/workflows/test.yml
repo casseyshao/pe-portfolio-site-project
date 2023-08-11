@@ -8,13 +8,13 @@ on:
         - main
 jobs:
   test:
-    run-on: ubuntu-latest
+    runs-on: ubuntu-latest
     name: Run Tests
     env:
       TESTING: true
     steps:
       - name: Checkout Repository
-      - uses: actions/checkout@v2
+        uses: actions/checkout@v2
 
       - name: Setup Python
         uses: actions/setup-python@v4
